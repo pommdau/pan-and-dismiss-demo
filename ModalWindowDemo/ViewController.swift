@@ -63,10 +63,11 @@ class ViewController: UIViewController {
     
     private func initializeUI() {
         view.addSubview(imageView)
-        imageView.centerY(inView: view)
         imageView.setSizeAspect(widthRatio: 1.0, heightRatio: 1.0)
-        imageView.anchor(left: view.leftAnchor, right: view.rightAnchor,
-                         paddingLeft: 12, paddingRight: 12)
+        imageView.setDimensions(width: 100, height: 100)
+        imageView.centerX(inView: view)
+        imageView.anchor(top: view.topAnchor, paddingTop: 100)
+        
     }
     
     private func configureUI() {

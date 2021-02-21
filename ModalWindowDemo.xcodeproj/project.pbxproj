@@ -107,6 +107,7 @@
 		AD70EFC525E21DFE001DBE35 /* ModalWindowDemo */ = {
 			isa = PBXGroup;
 			children = (
+				ADCC6F7E25E2D1CA0011B188 /* Utils */,
 				AD70EFC625E21DFE001DBE35 /* AppDelegate.swift */,
 				AD70EFC825E21DFE001DBE35 /* SceneDelegate.swift */,
 				AD70EFCA25E21DFE001DBE35 /* ViewController.swift */,
@@ -117,7 +118,6 @@
 				AD70EFCF25E21E01001DBE35 /* Assets.xcassets */,
 				AD70EFD125E21E01001DBE35 /* LaunchScreen.storyboard */,
 				AD70EFD425E21E01001DBE35 /* Info.plist */,
-				ADCC6F4E25E21F7C0011B188 /* UIView+AutoLayout.swift */,
 			);
 			path = ModalWindowDemo;
 			sourceTree = "<group>";
@@ -138,6 +138,14 @@
 				AD70EFEA25E21E01001DBE35 /* Info.plist */,
 			);
 			path = ModalWindowDemoUITests;
+			sourceTree = "<group>";
+		};
+		ADCC6F7E25E2D1CA0011B188 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				ADCC6F4E25E21F7C0011B188 /* UIView+AutoLayout.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
