@@ -133,7 +133,6 @@ class DetailImageViewController: UIViewController {
             print("DEBUG: .ended")
         case .cancelled:
             print("DEBUG: .cancelled")
-            sender.state = .began
             delegate?.viewPannCanceled()
         case .possible:
             print("DEBUG: .possible")

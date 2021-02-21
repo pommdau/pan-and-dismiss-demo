@@ -87,21 +87,20 @@ extension DetailImagePageViewController: UIPageViewControllerDataSource {
 extension DetailImagePageViewController: DetailImageViewControllerDelegate {
 
     func viewPannBegan() {
-
+        
     }
 
     func viewPannChanged(currentPosition: CGPoint, progress: CGFloat) {
 
-
     }
 
     func viewPannComplated(destinationPoint: CGPoint) {
-
-
+        print("DEBUG: viewPannComplated")
+        dismiss(animated: true, completion: nil)
     }
 
     func viewPannCanceled() {
-
+        print("DEBUG: viewPannCanceled")
     }
 
     func viewIsZoomed(isZooming: Bool) {
