@@ -27,7 +27,7 @@ class SimpleViewController: UIViewController {
     
     weak var delegate: SimpleViewControllerDelegate?
     
-    private let initialBackgroundOpacity = CGFloat(0.5)
+    private let initialBackgroundOpacity = CGFloat(1.0)
     
     private var sampleImageView: UIImageView = {
         let iv = UIImageView()
@@ -97,7 +97,7 @@ class SimpleViewController: UIViewController {
         sampleImageView.centerY(inView: view)
         sampleImageView.setSizeAspect(widthRatio: 1.0, heightRatio: 1.0)
         sampleImageView.anchor(left: view.leftAnchor, right: view.rightAnchor,
-                               paddingLeft: 12, paddingRight: 12)
+                               paddingLeft: 50, paddingRight: 50)
         
         self.modalPresentationStyle = .custom
         self.transitioningDelegate = self

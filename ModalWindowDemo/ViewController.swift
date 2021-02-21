@@ -11,7 +11,7 @@ class ViewController: UIViewController {
 
     // MARK: - Properties
     
-    var myPresentationController: DimmingPresentationController?
+    var simpleViewController: SimpleViewController?
     
     private lazy var imageView: UIImageView = {
         let iv = UIImageView()
@@ -43,11 +43,14 @@ class ViewController: UIViewController {
     // MARK: - Selectors
     
     @objc func handleProfileImageTapped() {
-        let controller = SimpleViewController()
-        controller.modalPresentationStyle = .custom
-        controller.transitioningDelegate  = self
-        controller.delegate  = self
-        self.present(controller, animated: true, completion: nil)
+        simpleViewController = SimpleViewController()
+        guard let simpleViewController = simpleViewController else {
+            return
+        }
+        
+        simpleViewController.modalPresentationStyle = .custom
+        simpleViewController.transitioningDelegate  = self
+        self.present(simpleViewController, animated: true, completion: nil)
     }
     
     // MARK: - Helpers
@@ -70,19 +73,11 @@ extension ViewController: UIViewControllerTransitioningDelegate {
     func presentationController(forPresented presented: UIViewController,
                                 presenting: UIViewController?,
                                 source: UIViewController) -> UIPresentationController? {
-        myPresentationController = DimmingPresentationController(presentedViewController: presented,
-                                                                 presenting: presenting)
-        return myPresentationController!
+        let dimmingPresentationController = DimmingPresentationController(presentedViewController: presented,
+                                                                          presenting: presenting)
+        simpleViewController?.delegate = dimmingPresentationController
+        
+        return dimmingPresentationController
     }
 
-}
-
-extension ViewController: SimpleViewControllerDelegate {
-    func simpleViewController(_ simpleViewController: SimpleViewController, backgroundOpacity opacity: CGFloat) {
-        print("\(opacity)")
-        guard let myPresentationController = myPresentationController else {
-            return
-        }
-        myPresentationController.dimmingView.alpha = opacity
-    }
 }

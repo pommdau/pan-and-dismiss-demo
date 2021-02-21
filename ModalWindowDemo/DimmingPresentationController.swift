@@ -40,3 +40,10 @@ class DimmingPresentationController: UIPresentationController {
         return false
     }
 }
+
+
+extension DimmingPresentationController: SimpleViewControllerDelegate {
+    func simpleViewController(_ simpleViewController: SimpleViewController, backgroundOpacity opacity: CGFloat) {
+        dimmingView.alpha = opacity
+    }
+}
