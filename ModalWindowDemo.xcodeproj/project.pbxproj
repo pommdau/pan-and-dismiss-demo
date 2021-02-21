@@ -16,9 +16,6 @@
 		AD70EFDE25E21E01001DBE35 /* ModalWindowDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70EFDD25E21E01001DBE35 /* ModalWindowDemoTests.swift */; };
 		AD70EFE925E21E01001DBE35 /* ModalWindowDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70EFE825E21E01001DBE35 /* ModalWindowDemoUITests.swift */; };
 		ADCC6F4F25E21F7C0011B188 /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCC6F4E25E21F7C0011B188 /* UIView+AutoLayout.swift */; };
-		ADCC6F5425E2262C0011B188 /* DetailImagePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCC6F5325E2262C0011B188 /* DetailImagePageViewController.swift */; };
-		ADCC6F5925E226450011B188 /* DetailImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCC6F5825E226450011B188 /* DetailImageViewController.swift */; };
-		ADCC6F5E25E2439D0011B188 /* CustomPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCC6F5D25E2439D0011B188 /* CustomPresentationController.swift */; };
 		ADCC6F6325E28FFB0011B188 /* SimpleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCC6F6225E28FFB0011B188 /* SimpleViewController.swift */; };
 		ADCC6F6B25E296980011B188 /* SlideUpAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCC6F6A25E296980011B188 /* SlideUpAnimationController.swift */; };
 		ADCC6F7725E2AD8D0011B188 /* DimmingPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCC6F7625E2AD8D0011B188 /* DimmingPresentationController.swift */; };
@@ -57,9 +54,6 @@
 		AD70EFE825E21E01001DBE35 /* ModalWindowDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalWindowDemoUITests.swift; sourceTree = "<group>"; };
 		AD70EFEA25E21E01001DBE35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADCC6F4E25E21F7C0011B188 /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
-		ADCC6F5325E2262C0011B188 /* DetailImagePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailImagePageViewController.swift; sourceTree = "<group>"; };
-		ADCC6F5825E226450011B188 /* DetailImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailImageViewController.swift; sourceTree = "<group>"; };
-		ADCC6F5D25E2439D0011B188 /* CustomPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPresentationController.swift; sourceTree = "<group>"; };
 		ADCC6F6225E28FFB0011B188 /* SimpleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleViewController.swift; sourceTree = "<group>"; };
 		ADCC6F6A25E296980011B188 /* SlideUpAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideUpAnimationController.swift; sourceTree = "<group>"; };
 		ADCC6F7625E2AD8D0011B188 /* DimmingPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimmingPresentationController.swift; sourceTree = "<group>"; };
@@ -116,9 +110,6 @@
 				AD70EFC625E21DFE001DBE35 /* AppDelegate.swift */,
 				AD70EFC825E21DFE001DBE35 /* SceneDelegate.swift */,
 				AD70EFCA25E21DFE001DBE35 /* ViewController.swift */,
-				ADCC6F5D25E2439D0011B188 /* CustomPresentationController.swift */,
-				ADCC6F5325E2262C0011B188 /* DetailImagePageViewController.swift */,
-				ADCC6F5825E226450011B188 /* DetailImageViewController.swift */,
 				ADCC6F6225E28FFB0011B188 /* SimpleViewController.swift */,
 				ADCC6F6A25E296980011B188 /* SlideUpAnimationController.swift */,
 				ADCC6F7625E2AD8D0011B188 /* DimmingPresentationController.swift */,
@@ -279,14 +270,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADCC6F5E25E2439D0011B188 /* CustomPresentationController.swift in Sources */,
 				ADCC6F7725E2AD8D0011B188 /* DimmingPresentationController.swift in Sources */,
 				AD70EFCB25E21DFE001DBE35 /* ViewController.swift in Sources */,
 				ADCC6F4F25E21F7C0011B188 /* UIView+AutoLayout.swift in Sources */,
 				AD70EFC725E21DFE001DBE35 /* AppDelegate.swift in Sources */,
-				ADCC6F5925E226450011B188 /* DetailImageViewController.swift in Sources */,
 				ADCC6F6B25E296980011B188 /* SlideUpAnimationController.swift in Sources */,
-				ADCC6F5425E2262C0011B188 /* DetailImagePageViewController.swift in Sources */,
 				ADCC6F6325E28FFB0011B188 /* SimpleViewController.swift in Sources */,
 				AD70EFC925E21DFE001DBE35 /* SceneDelegate.swift in Sources */,
 			);
