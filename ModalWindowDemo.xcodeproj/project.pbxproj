@@ -10,13 +10,12 @@
 		AD70EFC725E21DFE001DBE35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70EFC625E21DFE001DBE35 /* AppDelegate.swift */; };
 		AD70EFC925E21DFE001DBE35 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70EFC825E21DFE001DBE35 /* SceneDelegate.swift */; };
 		AD70EFCB25E21DFE001DBE35 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70EFCA25E21DFE001DBE35 /* ViewController.swift */; };
-		AD70EFCE25E21DFE001DBE35 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD70EFCC25E21DFE001DBE35 /* Main.storyboard */; };
 		AD70EFD025E21E01001DBE35 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD70EFCF25E21E01001DBE35 /* Assets.xcassets */; };
 		AD70EFD325E21E01001DBE35 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD70EFD125E21E01001DBE35 /* LaunchScreen.storyboard */; };
 		AD70EFDE25E21E01001DBE35 /* ModalWindowDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70EFDD25E21E01001DBE35 /* ModalWindowDemoTests.swift */; };
 		AD70EFE925E21E01001DBE35 /* ModalWindowDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD70EFE825E21E01001DBE35 /* ModalWindowDemoUITests.swift */; };
 		ADCC6F4F25E21F7C0011B188 /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCC6F4E25E21F7C0011B188 /* UIView+AutoLayout.swift */; };
-		ADCC6F6325E28FFB0011B188 /* SimpleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCC6F6225E28FFB0011B188 /* SimpleViewController.swift */; };
+		ADCC6F6325E28FFB0011B188 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCC6F6225E28FFB0011B188 /* PhotoViewController.swift */; };
 		ADCC6F6B25E296980011B188 /* SlideUpAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCC6F6A25E296980011B188 /* SlideUpAnimationController.swift */; };
 		ADCC6F7725E2AD8D0011B188 /* DimmingPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCC6F7625E2AD8D0011B188 /* DimmingPresentationController.swift */; };
 /* End PBXBuildFile section */
@@ -43,7 +42,6 @@
 		AD70EFC625E21DFE001DBE35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AD70EFC825E21DFE001DBE35 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		AD70EFCA25E21DFE001DBE35 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		AD70EFCD25E21DFE001DBE35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AD70EFCF25E21E01001DBE35 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AD70EFD225E21E01001DBE35 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AD70EFD425E21E01001DBE35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -54,7 +52,7 @@
 		AD70EFE825E21E01001DBE35 /* ModalWindowDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalWindowDemoUITests.swift; sourceTree = "<group>"; };
 		AD70EFEA25E21E01001DBE35 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ADCC6F4E25E21F7C0011B188 /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
-		ADCC6F6225E28FFB0011B188 /* SimpleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleViewController.swift; sourceTree = "<group>"; };
+		ADCC6F6225E28FFB0011B188 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		ADCC6F6A25E296980011B188 /* SlideUpAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideUpAnimationController.swift; sourceTree = "<group>"; };
 		ADCC6F7625E2AD8D0011B188 /* DimmingPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimmingPresentationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -108,13 +106,12 @@
 			isa = PBXGroup;
 			children = (
 				ADCC6F7E25E2D1CA0011B188 /* Utils */,
-				AD70EFC625E21DFE001DBE35 /* AppDelegate.swift */,
-				AD70EFC825E21DFE001DBE35 /* SceneDelegate.swift */,
 				AD70EFCA25E21DFE001DBE35 /* ViewController.swift */,
-				ADCC6F6225E28FFB0011B188 /* SimpleViewController.swift */,
+				ADCC6F6225E28FFB0011B188 /* PhotoViewController.swift */,
 				ADCC6F6A25E296980011B188 /* SlideUpAnimationController.swift */,
 				ADCC6F7625E2AD8D0011B188 /* DimmingPresentationController.swift */,
-				AD70EFCC25E21DFE001DBE35 /* Main.storyboard */,
+				AD70EFC625E21DFE001DBE35 /* AppDelegate.swift */,
+				AD70EFC825E21DFE001DBE35 /* SceneDelegate.swift */,
 				AD70EFCF25E21E01001DBE35 /* Assets.xcassets */,
 				AD70EFD125E21E01001DBE35 /* LaunchScreen.storyboard */,
 				AD70EFD425E21E01001DBE35 /* Info.plist */,
@@ -253,7 +250,6 @@
 			files = (
 				AD70EFD325E21E01001DBE35 /* LaunchScreen.storyboard in Resources */,
 				AD70EFD025E21E01001DBE35 /* Assets.xcassets in Resources */,
-				AD70EFCE25E21DFE001DBE35 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,7 +279,7 @@
 				ADCC6F4F25E21F7C0011B188 /* UIView+AutoLayout.swift in Sources */,
 				AD70EFC725E21DFE001DBE35 /* AppDelegate.swift in Sources */,
 				ADCC6F6B25E296980011B188 /* SlideUpAnimationController.swift in Sources */,
-				ADCC6F6325E28FFB0011B188 /* SimpleViewController.swift in Sources */,
+				ADCC6F6325E28FFB0011B188 /* PhotoViewController.swift in Sources */,
 				AD70EFC925E21DFE001DBE35 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -320,14 +316,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		AD70EFCC25E21DFE001DBE35 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AD70EFCD25E21DFE001DBE35 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		AD70EFD125E21E01001DBE35 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

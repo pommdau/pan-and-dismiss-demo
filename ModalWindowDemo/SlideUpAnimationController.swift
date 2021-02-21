@@ -7,8 +7,32 @@
 
 import UIKit
 
-class SlideUpAnimationController: NSObject, UIViewControllerAnimatedTransitioning {
+class SlideAnimationController: NSObject {
+        
+    // MARK: - Enum
     
+    enum SlideAnimationStyle {
+        case up
+        case down
+    }
+    
+    // MARK: - Properties
+    
+    private var slideAnimationStyle: SlideAnimationStyle = .down
+    
+    // MARK: - Lifecycle
+    
+    convenience init(slideAnimationStyle: SlideAnimationStyle) {
+        self.init()
+        self.slideAnimationStyle = slideAnimationStyle
+    }
+    
+}
+
+// MARK: - UIViewControllerAnimatedTransitioning
+
+extension SlideAnimationController: UIViewControllerAnimatedTransitioning {
+
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.3
     }
@@ -21,35 +45,16 @@ class SlideUpAnimationController: NSObject, UIViewControllerAnimatedTransitionin
             let time = transitionDuration(using: transitionContext)
             
             UIView.animate(withDuration: time, animations: {
-                fromView.center.y -= containerView.bounds.size.height
-                fromView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+                switch self.slideAnimationStyle {
+                case .up:
+                    fromView.center.y -= containerView.bounds.size.height
+                case .down:
+                    fromView.center.y += containerView.bounds.size.height
+                }
+//                fromView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)  // up to you
             }, completion: { finished in
                 transitionContext.completeTransition(finished)
             })
         }
     }
 }
-
-class SlideDownAnimationController: NSObject, UIViewControllerAnimatedTransitioning {
-    
-    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 0.3
-    }
-    
-    // 実行するアニメーション
-    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        if let fromView = transitionContext.view(forKey: UITransitionContextViewKey.from) {
-            
-            let containerView = transitionContext.containerView
-            let time = transitionDuration(using: transitionContext)
-            
-            UIView.animate(withDuration: time, animations: {
-                fromView.center.y += containerView.bounds.size.height
-                fromView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
-            }, completion: { finished in
-                transitionContext.completeTransition(finished)
-            })
-        }
-    }
-}
-

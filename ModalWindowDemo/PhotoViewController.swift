@@ -1,5 +1,5 @@
 //
-//  SimpleViewController.swift
+//  PhotoViewController.swift
 //  ModalWindowDemo
 //
 //  Created by ForAppleStoreAccount on 2021/02/21.
@@ -7,32 +7,27 @@
 
 import UIKit
 
-protocol SimpleViewControllerDelegate: class {
-    func simpleViewController(_ simpleViewController: SimpleViewController, backgroundOpacity opacity: CGFloat)
+protocol PhotoViewControllerDelegate: class {
+    func photoViewController(_ photoViewController: PhotoViewController, backgroundOpacity opacity: CGFloat)
 }
 
-
-class SimpleViewController: UIViewController {
-    
-    // MARK: - Enum
-    
-    enum AnimationStyle {
-        case up
-        case down
-    }
+class PhotoViewController: UIViewController {
     
     // MARK: - Properties
     
-    var dismissStyle = AnimationStyle.down
+    weak var delegate: PhotoViewControllerDelegate?
     
-    weak var delegate: SimpleViewControllerDelegate?
-    
+    private var dismissStyle = SlideAnimationController.SlideAnimationStyle.down
     private let initialBackgroundOpacity = CGFloat(1.0)
     
     private var sampleImageView: UIImageView = {
-        let iv = UIImageView()
-        iv.backgroundColor = .blue
-        return iv
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 20
+        imageView.backgroundColor = .blue
+        
+        return imageView
     }()
     
     // MARK: - Lifecycle
@@ -44,7 +39,7 @@ class SimpleViewController: UIViewController {
     
     // MARK: - Selectors
     
-    @objc func handleDismiss(sender: UIPanGestureRecognizer) {
+    @objc func handleViewPanned(sender: UIPanGestureRecognizer) {
         
         let translation = sender.translation(in: view)
         let progress = abs(translation.y) / view.frame.height
@@ -58,10 +53,10 @@ class SimpleViewController: UIViewController {
                            options: .curveEaseOut,
                            animations: {
                             self.sampleImageView.transform = CGAffineTransform(translationX: 0, y: translation.y)
-                            self.delegate?.simpleViewController(self, backgroundOpacity: (self.initialBackgroundOpacity - progress))
+                            self.delegate?.photoViewController(self, backgroundOpacity: (self.initialBackgroundOpacity - progress))
                            })
         case .cancelled:
-            self.delegate?.simpleViewController(self, backgroundOpacity: (initialBackgroundOpacity))
+            self.delegate?.photoViewController(self, backgroundOpacity: (initialBackgroundOpacity))
             
         case .ended:
             let velocity = sender.velocity(in: view).y
@@ -78,7 +73,7 @@ class SimpleViewController: UIViewController {
                     options: .curveEaseOut,
                     animations: {
                         self.sampleImageView.transform = .identity
-                        self.delegate?.simpleViewController(self, backgroundOpacity: self.initialBackgroundOpacity)
+                        self.delegate?.photoViewController(self, backgroundOpacity: self.initialBackgroundOpacity)
                     })
             }
         default:
@@ -90,37 +85,22 @@ class SimpleViewController: UIViewController {
     // MARK: - Helpers
     
     private func configureUI() {
-        view.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handleDismiss)))
+        self.modalPresentationStyle = .custom
+        self.transitioningDelegate = self
         
-        view.addSubview(sampleImageView)
+        view.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handleViewPanned)))
         view.addSubview(sampleImageView)
         sampleImageView.centerY(inView: view)
         sampleImageView.setSizeAspect(widthRatio: 1.0, heightRatio: 1.0)
         sampleImageView.anchor(left: view.leftAnchor, right: view.rightAnchor,
                                paddingLeft: 50, paddingRight: 50)
-        
-        self.modalPresentationStyle = .custom
-        self.transitioningDelegate = self
+        sampleImageView.image = UIImage(named: "zoom_saga")
     }
     
 }
 
-extension SimpleViewController: UIViewControllerTransitioningDelegate {
-    
-    // 遷移時にアニメーションを使用する設定
-    func animationController(forPresented presented: UIViewController,
-                             presenting: UIViewController,
-                             source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        return SlideUpAnimationController()
-    }
-    
+extension PhotoViewController: UIViewControllerTransitioningDelegate {
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        switch dismissStyle {
-        case .up:
-            return SlideUpAnimationController()
-        case .down:
-            return SlideDownAnimationController()
-        }
-        
+        return SlideAnimationController(slideAnimationStyle: dismissStyle)
     }
 }

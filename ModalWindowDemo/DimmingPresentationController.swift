@@ -8,13 +8,14 @@
 import UIKit
 
 class DimmingPresentationController: UIPresentationController {
+    
     lazy var dimmingView = UIView()
     
     // The presentationTransitionWillBegin() method is invoked when the new view controller is about to be shown on the screen.
     // containerView:=SearchViewControllerのトップに位置するView
     override func presentationTransitionWillBegin() {
         dimmingView.frame = containerView!.bounds
-        dimmingView.backgroundColor = .systemPink
+        dimmingView.backgroundColor = .black
         containerView!.insertSubview(dimmingView, at: 0)
         
         // Animate background gradient view(fade in)
@@ -41,9 +42,10 @@ class DimmingPresentationController: UIPresentationController {
     }
 }
 
+// MARK: - PhotoViewControllerDelegate
 
-extension DimmingPresentationController: SimpleViewControllerDelegate {
-    func simpleViewController(_ simpleViewController: SimpleViewController, backgroundOpacity opacity: CGFloat) {
+extension DimmingPresentationController: PhotoViewControllerDelegate {
+    func photoViewController(_ photoViewController: PhotoViewController, backgroundOpacity opacity: CGFloat) {
         dimmingView.alpha = opacity
     }
 }

@@ -17,7 +17,7 @@ class ViewController: UIViewController {
 
     // MARK: - Properties
     
-    var simpleViewController: SimpleViewController?
+    var photoViewController: PhotoViewController?
     
     private lazy var imageView: UIImageView = {
         let iv = UIImageView()
@@ -42,21 +42,19 @@ class ViewController: UIViewController {
         
         initializeUI()
         configureUI()
-        
-        handleProfileImageTapped()
     }
     
     // MARK: - Selectors
     
     @objc func handleProfileImageTapped() {
-        simpleViewController = SimpleViewController()
-        guard let simpleViewController = simpleViewController else {
+        photoViewController = PhotoViewController()
+        guard let photoViewController = photoViewController else {
             return
         }
         
-        simpleViewController.modalPresentationStyle = .custom
-        simpleViewController.transitioningDelegate  = self
-        self.present(simpleViewController, animated: true, completion: nil)
+        photoViewController.modalPresentationStyle = .custom
+        photoViewController.transitioningDelegate  = self
+        self.present(photoViewController, animated: true, completion: nil)
     }
     
     // MARK: - Helpers
@@ -64,9 +62,8 @@ class ViewController: UIViewController {
     private func initializeUI() {
         view.addSubview(imageView)
         imageView.setSizeAspect(widthRatio: 1.0, heightRatio: 1.0)
-        imageView.setDimensions(width: 100, height: 100)
-        imageView.centerX(inView: view)
-        imageView.anchor(top: view.topAnchor, paddingTop: 100)
+        imageView.setDimensions(width: 200, height: 200)
+        imageView.center(inView: view)
         
     }
     
@@ -82,7 +79,7 @@ extension ViewController: UIViewControllerTransitioningDelegate {
                                 source: UIViewController) -> UIPresentationController? {
         let dimmingPresentationController = DimmingPresentationController(presentedViewController: presented,
                                                                           presenting: presenting)
-        simpleViewController?.delegate = dimmingPresentationController
+        photoViewController?.delegate = dimmingPresentationController
         
         return dimmingPresentationController
     }
