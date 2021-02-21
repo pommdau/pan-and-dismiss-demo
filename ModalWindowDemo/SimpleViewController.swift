@@ -13,7 +13,7 @@ protocol SimpleViewControllerDelegate: class {
 
 
 class SimpleViewController: UIViewController {
-
+    
     // MARK: - Enum
     
     enum AnimationStyle {
@@ -23,11 +23,11 @@ class SimpleViewController: UIViewController {
     
     // MARK: - Properties
     
-    var viewTranslation = CGPoint(x: 0, y: 0)
-
     var dismissStyle = AnimationStyle.down
     
     weak var delegate: SimpleViewControllerDelegate?
+    
+    private let initialBackgroundOpacity = CGFloat(0.5)
     
     private var sampleImageView: UIImageView = {
         let iv = UIImageView()
@@ -39,7 +39,6 @@ class SimpleViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         configureUI()
     }
     
@@ -51,39 +50,42 @@ class SimpleViewController: UIViewController {
         let progress = abs(translation.y) / view.frame.height
         
         switch sender.state {
-            case .changed:
-                UIView.animate(withDuration: 0.0,
-                               delay: 0,
-                               usingSpringWithDamping: 0.7,
-                               initialSpringVelocity: 1,
-                               options: .curveEaseOut,
-                               animations: {
-                                self.sampleImageView.transform = CGAffineTransform(translationX: 0, y: translation.y)
-                                self.delegate?.simpleViewController(self, backgroundOpacity: (0.85 - progress))
-                               })
-            case .ended:
-                let velocity = sender.velocity(in: view).y
-                dismissStyle = velocity >= 0 ? .down : .up
-                
-                if progress + abs(velocity) / view.bounds.height > 0.5 {
-                    dismiss(animated: true, completion: nil)
-                } else {
-                    UIView.animate(
-                        withDuration: 0.0,
-                        delay: 0,
-                        usingSpringWithDamping: 0.7,
-                        initialSpringVelocity: 1,
-                        options: .curveEaseOut,
-                        animations: {
-                            self.sampleImageView.transform = .identity
-                            self.delegate?.simpleViewController(self, backgroundOpacity: (0.85 - progress))
-                        })
-                }
+        case .changed:
+            UIView.animate(withDuration: 0.0,
+                           delay: 0,
+                           usingSpringWithDamping: 0.7,
+                           initialSpringVelocity: 1,
+                           options: .curveEaseOut,
+                           animations: {
+                            self.sampleImageView.transform = CGAffineTransform(translationX: 0, y: translation.y)
+                            self.delegate?.simpleViewController(self, backgroundOpacity: (self.initialBackgroundOpacity - progress))
+                           })
+        case .cancelled:
+            self.delegate?.simpleViewController(self, backgroundOpacity: (initialBackgroundOpacity))
+            
+        case .ended:
+            let velocity = sender.velocity(in: view).y
+            dismissStyle = velocity >= 0 ? .down : .up
+            
+            if progress + abs(velocity) / view.bounds.height > 0.5 {
+                dismiss(animated: true, completion: nil)
+            } else {
+                UIView.animate(
+                    withDuration: 0.0,
+                    delay: 0,
+                    usingSpringWithDamping: 0.7,
+                    initialSpringVelocity: 1,
+                    options: .curveEaseOut,
+                    animations: {
+                        self.sampleImageView.transform = .identity
+                        self.delegate?.simpleViewController(self, backgroundOpacity: self.initialBackgroundOpacity)
+                    })
+            }
         default:
             break
         }
     }
-
+    
     
     // MARK: - Helpers
     
@@ -100,7 +102,7 @@ class SimpleViewController: UIViewController {
         self.modalPresentationStyle = .custom
         self.transitioningDelegate = self
     }
-
+    
 }
 
 extension SimpleViewController: UIViewControllerTransitioningDelegate {
