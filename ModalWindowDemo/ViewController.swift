@@ -34,20 +34,17 @@ class ViewController: UIViewController {
         
         initializeUI()
         configureUI()
+        
+        handleProfileImageTapped()
     }
     
     // MARK: - Selectors
     
     @objc func handleProfileImageTapped() {
-//        let controller = DetailImagePageViewController()
         let controller = SimpleViewController()
-//        controller.delegate = self
-        controller.modalPresentationStyle = .overCurrentContext
-//        controller.modalPresentationStyle = .custom
-//        controller.transitioningDelegate = self
+        controller.modalPresentationStyle = .custom
+        controller.transitioningDelegate  = self
         self.present(controller, animated: true, completion: nil)
-//        self.navigationController?.view.mask = UIView(frame: self.view.frame)
-//        self.navigationController?.view.mask?.backgroundColor = UIColor.init(white: 0.0, alpha: 0.5)
     }
     
     // MARK: - Helpers
@@ -62,6 +59,16 @@ class ViewController: UIViewController {
     
     private func configureUI() {
         imageView.image = UIImage(named: "zoom_saga")
+    }
+
+}
+
+extension ViewController: UIViewControllerTransitioningDelegate {
+    func presentationController(forPresented presented: UIViewController,
+                                presenting: UIViewController?,
+                                source: UIViewController) -> UIPresentationController? {
+        return DimmingPresentationController(presentedViewController: presented,
+                                             presenting: presenting)
     }
 
 }

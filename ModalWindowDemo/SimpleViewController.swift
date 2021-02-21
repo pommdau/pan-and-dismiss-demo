@@ -33,6 +33,8 @@ class SimpleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+//        self.view.backgroundColor = UIColor(red: 1.0, green: 0, blue: 0, alpha: 0.2)
+
         configureUI()
     }
     
@@ -52,7 +54,6 @@ class SimpleViewController: UIViewController {
                                options: .curveEaseOut,
                                animations: {
                                 self.sampleImageView.transform = CGAffineTransform(translationX: 0, y: translation.y)
-                                self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: (0.85 - progress))
                                })
             case .ended:
                 let velocity = sender.velocity(in: view).y
@@ -69,7 +70,6 @@ class SimpleViewController: UIViewController {
                         options: .curveEaseOut,
                         animations: {
                             self.sampleImageView.transform = .identity
-                            self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.85)
                         })
                 }
         default:
@@ -81,7 +81,6 @@ class SimpleViewController: UIViewController {
     // MARK: - Helpers
     
     private func configureUI() {
-        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.85)
         view.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handleDismiss)))
         
         view.addSubview(sampleImageView)
@@ -98,6 +97,7 @@ class SimpleViewController: UIViewController {
 }
 
 extension SimpleViewController: UIViewControllerTransitioningDelegate {
+    
     // 遷移時にアニメーションを使用する設定
     func animationController(forPresented presented: UIViewController,
                              presenting: UIViewController,

@@ -21,6 +21,7 @@
 		ADCC6F5E25E2439D0011B188 /* CustomPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCC6F5D25E2439D0011B188 /* CustomPresentationController.swift */; };
 		ADCC6F6325E28FFB0011B188 /* SimpleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCC6F6225E28FFB0011B188 /* SimpleViewController.swift */; };
 		ADCC6F6B25E296980011B188 /* SlideUpAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCC6F6A25E296980011B188 /* SlideUpAnimationController.swift */; };
+		ADCC6F7725E2AD8D0011B188 /* DimmingPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADCC6F7625E2AD8D0011B188 /* DimmingPresentationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		ADCC6F5D25E2439D0011B188 /* CustomPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPresentationController.swift; sourceTree = "<group>"; };
 		ADCC6F6225E28FFB0011B188 /* SimpleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleViewController.swift; sourceTree = "<group>"; };
 		ADCC6F6A25E296980011B188 /* SlideUpAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideUpAnimationController.swift; sourceTree = "<group>"; };
+		ADCC6F7625E2AD8D0011B188 /* DimmingPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimmingPresentationController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 				ADCC6F5825E226450011B188 /* DetailImageViewController.swift */,
 				ADCC6F6225E28FFB0011B188 /* SimpleViewController.swift */,
 				ADCC6F6A25E296980011B188 /* SlideUpAnimationController.swift */,
+				ADCC6F7625E2AD8D0011B188 /* DimmingPresentationController.swift */,
 				AD70EFCC25E21DFE001DBE35 /* Main.storyboard */,
 				AD70EFCF25E21E01001DBE35 /* Assets.xcassets */,
 				AD70EFD125E21E01001DBE35 /* LaunchScreen.storyboard */,
@@ -277,6 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADCC6F5E25E2439D0011B188 /* CustomPresentationController.swift in Sources */,
+				ADCC6F7725E2AD8D0011B188 /* DimmingPresentationController.swift in Sources */,
 				AD70EFCB25E21DFE001DBE35 /* ViewController.swift in Sources */,
 				ADCC6F4F25E21F7C0011B188 /* UIView+AutoLayout.swift in Sources */,
 				AD70EFC725E21DFE001DBE35 /* AppDelegate.swift in Sources */,
