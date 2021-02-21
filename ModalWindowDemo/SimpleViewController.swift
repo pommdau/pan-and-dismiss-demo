@@ -9,9 +9,18 @@ import UIKit
 
 class SimpleViewController: UIViewController {
 
+    // MARK: - Enum
+    
+    enum AnimationStyle {
+        case up
+        case down
+    }
+    
     // MARK: - Properties
     
     var viewTranslation = CGPoint(x: 0, y: 0)
+
+    var dismissStyle = AnimationStyle.down
     
     private var sampleImageView: UIImageView = {
         let iv = UIImageView()
@@ -33,11 +42,9 @@ class SimpleViewController: UIViewController {
         
         let translation = sender.translation(in: view)
         let progress = abs(translation.y) / view.frame.height
-        print("progress: \(progress * 100)")
         
         switch sender.state {
             case .changed:
-//                viewTranslation = sender.translation(in: view)
                 UIView.animate(withDuration: 0.0,
                                delay: 0,
                                usingSpringWithDamping: 0.7,
@@ -48,22 +55,26 @@ class SimpleViewController: UIViewController {
                                 self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: (0.85 - progress))
                                })
             case .ended:
-                if translation.y < 200 {
-                    UIView.animate(withDuration: 0.0,
-                                   delay: 0,
-                                   usingSpringWithDamping: 0.7,
-                                   initialSpringVelocity: 1,
-                                   options: .curveEaseOut,
-                                   animations: {
-                                    self.sampleImageView.transform = .identity
-                                    self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.85)
-                                   })
-                } else {
+                let velocity = sender.velocity(in: view).y
+                dismissStyle = velocity >= 0 ? .down : .up
+                
+                if progress + abs(velocity) / view.bounds.height > 0.5 {
                     dismiss(animated: true, completion: nil)
+                } else {
+                    UIView.animate(
+                        withDuration: 0.0,
+                        delay: 0,
+                        usingSpringWithDamping: 0.7,
+                        initialSpringVelocity: 1,
+                        options: .curveEaseOut,
+                        animations: {
+                            self.sampleImageView.transform = .identity
+                            self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.85)
+                        })
                 }
-            default:
-                break
-            }
+        default:
+            break
+        }
     }
 
     
@@ -79,6 +90,28 @@ class SimpleViewController: UIViewController {
         sampleImageView.setSizeAspect(widthRatio: 1.0, heightRatio: 1.0)
         sampleImageView.anchor(left: view.leftAnchor, right: view.rightAnchor,
                                paddingLeft: 12, paddingRight: 12)
+        
+        self.modalPresentationStyle = .custom
+        self.transitioningDelegate = self
     }
 
+}
+
+extension SimpleViewController: UIViewControllerTransitioningDelegate {
+    // 遷移時にアニメーションを使用する設定
+    func animationController(forPresented presented: UIViewController,
+                             presenting: UIViewController,
+                             source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return SlideUpAnimationController()
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        switch dismissStyle {
+        case .up:
+            return SlideUpAnimationController()
+        case .down:
+            return SlideDownAnimationController()
+        }
+        
+    }
 }

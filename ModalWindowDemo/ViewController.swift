@@ -65,17 +65,3 @@ class ViewController: UIViewController {
     }
 
 }
-
-extension ViewController: UIPageViewControllerDelegate {
-    
-}
-
-
-extension ViewController: UIViewControllerTransitioningDelegate {
-    func presentationController(forPresented presented: UIViewController,
-                                presenting: UIViewController?,
-                                source: UIViewController) -> UIPresentationController? {
-        
-        return CustomPresentationController(presentedViewController: presented, presenting: presenting)
-    }
-}
