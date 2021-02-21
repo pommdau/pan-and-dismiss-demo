@@ -4,6 +4,12 @@
 //
 //  Created by ForAppleStoreAccount on 2021/02/21.
 //
+/*
+ [A Simple Drag Dismiss on Presented ViewController Tutorial \| by Diego Bustamante \| Better Programming \| Medium](https://medium.com/better-programming/simple-drag-dismiss-on-presented-view-controller-tutorial-5f2f44f86f7b)
+ [Heroを使ったmodal viewcontrollerをドラッグ閉じるの実装 \- your3i’s blog](https://your3i.hatenablog.jp/entry/2018/04/30/145307)
+ [iOS\_Apprentice\_V8\.2\.1/Practice/StoreSearch/StoreSearch/DetailViewController\.swift](https://github.com/pommdau/iOS_Apprentice_V8.2.1/blob/e5758a95fcaa5ed94bfe7bc54fe52fd62ef6ab5d/Practice/StoreSearch/StoreSearch/DetailViewController.swift)
+ [【Swift】UIPresentationControllerを使ってモーダルビューを表示する](https://qiita.com/wai21/items/9b40192eb3ee07375016)
+ */
 
 import UIKit
 
