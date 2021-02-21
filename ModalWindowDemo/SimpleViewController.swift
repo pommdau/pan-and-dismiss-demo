@@ -30,26 +30,33 @@ class SimpleViewController: UIViewController {
     // MARK: - Selectors
     
     @objc func handleDismiss(sender: UIPanGestureRecognizer) {
+        
+        let translation = sender.translation(in: view)
+        let progress = abs(translation.y) / view.frame.height
+        print("progress: \(progress * 100)")
+        
         switch sender.state {
             case .changed:
-                viewTranslation = sender.translation(in: view)
-                UIView.animate(withDuration: 0.5,
+//                viewTranslation = sender.translation(in: view)
+                UIView.animate(withDuration: 0.0,
                                delay: 0,
                                usingSpringWithDamping: 0.7,
                                initialSpringVelocity: 1,
                                options: .curveEaseOut,
                                animations: {
-                                self.sampleImageView.transform = CGAffineTransform(translationX: 0, y: self.viewTranslation.y)
+                                self.sampleImageView.transform = CGAffineTransform(translationX: 0, y: translation.y)
+                                self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: (0.85 - progress))
                                })
             case .ended:
-                if viewTranslation.y < 200 {
-                    UIView.animate(withDuration: 0.5,
+                if translation.y < 200 {
+                    UIView.animate(withDuration: 0.0,
                                    delay: 0,
                                    usingSpringWithDamping: 0.7,
                                    initialSpringVelocity: 1,
                                    options: .curveEaseOut,
                                    animations: {
                                     self.sampleImageView.transform = .identity
+                                    self.view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.85)
                                    })
                 } else {
                     dismiss(animated: true, completion: nil)
@@ -63,7 +70,7 @@ class SimpleViewController: UIViewController {
     // MARK: - Helpers
     
     private func configureUI() {
-        view.backgroundColor = .systemOrange
+        view.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.85)
         view.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handleDismiss)))
         
         view.addSubview(sampleImageView)
