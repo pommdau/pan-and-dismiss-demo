@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol SimpleViewControllerDelegate: class {
+    func simpleViewController(_ simpleViewController: SimpleViewController, backgroundOpacity opacity: CGFloat)
+}
+
+
 class SimpleViewController: UIViewController {
 
     // MARK: - Enum
@@ -21,6 +26,8 @@ class SimpleViewController: UIViewController {
     var viewTranslation = CGPoint(x: 0, y: 0)
 
     var dismissStyle = AnimationStyle.down
+    
+    weak var delegate: SimpleViewControllerDelegate?
     
     private var sampleImageView: UIImageView = {
         let iv = UIImageView()
@@ -52,6 +59,7 @@ class SimpleViewController: UIViewController {
                                options: .curveEaseOut,
                                animations: {
                                 self.sampleImageView.transform = CGAffineTransform(translationX: 0, y: translation.y)
+                                self.delegate?.simpleViewController(self, backgroundOpacity: (0.85 - progress))
                                })
             case .ended:
                 let velocity = sender.velocity(in: view).y
@@ -68,6 +76,7 @@ class SimpleViewController: UIViewController {
                         options: .curveEaseOut,
                         animations: {
                             self.sampleImageView.transform = .identity
+                            self.delegate?.simpleViewController(self, backgroundOpacity: (0.85 - progress))
                         })
                 }
         default:

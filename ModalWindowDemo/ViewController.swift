@@ -11,6 +11,8 @@ class ViewController: UIViewController {
 
     // MARK: - Properties
     
+    var myPresentationController: DimmingPresentationController?
+    
     private lazy var imageView: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFill
@@ -44,6 +46,7 @@ class ViewController: UIViewController {
         let controller = SimpleViewController()
         controller.modalPresentationStyle = .custom
         controller.transitioningDelegate  = self
+        controller.delegate  = self
         self.present(controller, animated: true, completion: nil)
     }
     
@@ -67,8 +70,19 @@ extension ViewController: UIViewControllerTransitioningDelegate {
     func presentationController(forPresented presented: UIViewController,
                                 presenting: UIViewController?,
                                 source: UIViewController) -> UIPresentationController? {
-        return DimmingPresentationController(presentedViewController: presented,
-                                             presenting: presenting)
+        myPresentationController = DimmingPresentationController(presentedViewController: presented,
+                                                                 presenting: presenting)
+        return myPresentationController!
     }
 
+}
+
+extension ViewController: SimpleViewControllerDelegate {
+    func simpleViewController(_ simpleViewController: SimpleViewController, backgroundOpacity opacity: CGFloat) {
+        print("\(opacity)")
+        guard let myPresentationController = myPresentationController else {
+            return
+        }
+        myPresentationController.dimmingView.alpha = opacity
+    }
 }
