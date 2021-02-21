@@ -153,6 +153,7 @@ class DetailImageViewController: UIViewController {
         self.view.addSubview(self.scrollView)
         
         imageView.image = UIImage(named: "zoom_saga")
+        layoutScrollView()
     }
     
     private func layoutScrollView() {
