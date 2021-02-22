@@ -8,7 +8,7 @@
 import UIKit
 
 protocol PhotoViewControllerDelegate: class {
-    func photoViewController(_ photoViewController: PhotoViewController, backgroundOpacity opacity: CGFloat)
+    func photoViewController(_ photoViewController: PhotoViewController, didUpdateBackgroundOpacity opacity: CGFloat)
 }
 
 class PhotoViewController: UIViewController {
@@ -53,10 +53,10 @@ class PhotoViewController: UIViewController {
                            options: .curveEaseOut,
                            animations: {
                             self.sampleImageView.transform = CGAffineTransform(translationX: 0, y: translation.y)
-                            self.delegate?.photoViewController(self, backgroundOpacity: (self.initialBackgroundOpacity - progress))
+                            self.delegate?.photoViewController(self, didUpdateBackgroundOpacity: (self.initialBackgroundOpacity - progress))
                            })
         case .cancelled:
-            self.delegate?.photoViewController(self, backgroundOpacity: (initialBackgroundOpacity))
+            self.delegate?.photoViewController(self, didUpdateBackgroundOpacity: (initialBackgroundOpacity))
             
         case .ended:
             let velocity = sender.velocity(in: view).y
@@ -73,7 +73,7 @@ class PhotoViewController: UIViewController {
                     options: .curveEaseOut,
                     animations: {
                         self.sampleImageView.transform = .identity
-                        self.delegate?.photoViewController(self, backgroundOpacity: self.initialBackgroundOpacity)
+                        self.delegate?.photoViewController(self, didUpdateBackgroundOpacity: self.initialBackgroundOpacity)
                     })
             }
         default:
@@ -85,7 +85,6 @@ class PhotoViewController: UIViewController {
     // MARK: - Helpers
     
     private func configureUI() {
-        self.modalPresentationStyle = .custom
         self.transitioningDelegate = self
         
         view.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handleViewPanned)))

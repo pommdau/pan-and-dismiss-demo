@@ -45,7 +45,7 @@ class DimmingPresentationController: UIPresentationController {
 // MARK: - PhotoViewControllerDelegate
 
 extension DimmingPresentationController: PhotoViewControllerDelegate {
-    func photoViewController(_ photoViewController: PhotoViewController, backgroundOpacity opacity: CGFloat) {
+    func photoViewController(_ photoViewController: PhotoViewController, didUpdateBackgroundOpacity opacity: CGFloat) {
         dimmingView.alpha = opacity
     }
 }
